@@ -1,0 +1,239 @@
+body {
+  background: rgb(25, 25, 25);
+  color: white;
+  overflow-x: hidden;
+}
+.skills-section {
+  background: "rgb(25, 25, 25)";
+}
+
+.text-orange {
+  color: #f8b233;
+}
+
+.skill-bar .bar-bg {
+  height: 2px;
+  background-color: #2c2f38;
+  margin-top: 8px;
+  position: relative;
+  width: 100%;
+}
+
+.skill-bar .bar-fill {
+  height: 2px;
+  background-color: #f8b233;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.about-section {
+  background-color: rgb(25, 25, 25);
+  padding: 60px 0;
+}
+
+.text-orange {
+  color: #f8b233;
+}
+
+.btn-orange {
+  background-color: #f8b233;
+  border: none;
+  color: #000;
+  padding: 10px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-orange:hover {
+  background-color: #ffcc5c;
+  color: #000;
+}
+.contact-section {
+  background-color: rgb(25, 25, 25);
+  padding: 60px 0;
+}
+
+.text-orange {
+  color: #f8b233;
+}
+
+.form-control {
+  background-color: rgb(45, 45, 45);
+  border: 1px solid #222;
+  color: white;
+}
+
+.form-control:focus {
+  background-color: #131622;
+  color: white;
+  box-shadow: none;
+  border-color: #f8b233;
+}
+
+.btn-orange {
+  background-color: #f8b233;
+  border: none;
+  color: #000;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-weight: 500;
+}
+
+.btn-orange:hover {
+  background-color: #ffcc5c;
+  color: #000;
+}
+
+.social-icon {
+  background-color: transparent;
+  border: 1px solid #666;
+  border-radius: 50%;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #f8b233;
+  color: #000;
+  border-color: #f8b233;
+}
+.resume-section {
+  background: "rgb(25, 25, 25)";
+  padding: 60px 0;
+}
+
+.text-orange {
+  color: #f8b233;
+}
+
+.timeline {
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  padding-left: 20px;
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background-color: #f8b233;
+  border-radius: 50%;
+}
+.blog-section {
+  background-color: rgb(25, 25, 25);
+}
+
+.text-orange {
+  color: #f8b233;
+}
+
+.blog-card img {
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.blog-card {
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 350px;
+}
+
+.card-title {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.testimonial-section {
+  background-color: rgb(25, 25, 25);
+}
+
+.text-orange {
+  color: #f8b233;
+}
+
+.testimonial-card .quote-box {
+  position: relative;
+  background-color: #1c1e2b;
+  border-radius: 10px;
+}
+
+.testimonial-card .quote-box .arrow-down {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #1c1e2b;
+}
+
+.testimonial-card .profile img {
+  object-fit: cover;
+  border: 2px solid #f8b233;
+}
+/* .portfolio-item {
+  border: 1px solid #2e2e2e;
+
+  border-radius: 4px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition: transform 0.3s;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.02);
+}
+
+.portfolio-overlay {
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  height: 100%;
+
+  width: 100%;
+
+  background-color: rgba(11, 14, 26, 0.9);
+
+  opacity: 0;
+
+  transition: opacity 0.3s;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+} */
+
+.bi-plus-circle-fill {
+  background: #f8b233;
+
+  border-radius: 100%;
+
+  padding: 5px;
+
+  color: black !important;
+}
+
+.white-placeholder::placeholder {
+  color: white;
+  opacity: 1; /* optional: ensures it's fully visible */
+}

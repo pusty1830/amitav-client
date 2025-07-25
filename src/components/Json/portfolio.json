@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "https://davis-html.netlify.app/assets/img/portfolio/portfolio1.jpg",
+    "title": "Voiceworld",
+    "category": "Streaming / Podcast Platform"
+  },
+  {
+    "id": 2,
+    "image": "https://davis-html.netlify.app/assets/img/portfolio/portfolio2.jpg",
+    "title": "Gym Management System",
+    "category": "Full-stack / Admin Dashboard"
+  },
+  {
+    "id": 3,
+    "image": "https://davis-html.netlify.app/assets/img/portfolio/portfolio3.jpg",
+    "title": "Huts4u Booking App",
+    "category": "Hotel / AWS Deployment"
+  },
+  {
+    "id": 4,
+    "image": "https://davis-html.netlify.app/assets/img/portfolio/portfolio4.jpg",
+    "title": "Livabhi Productions",
+    "category": "Media / Full-stack Solutions"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "title": "MY SKILLS",
+  "heading": "All the skills that I have in this field of work are mentioned below.",
+  "paragraph1": "I'm a dedicated Full-Stack Developer with hands-on experience in modern web technologies, focused on building scalable, maintainable, and high-performance applications.",
+  "paragraph2": "From frontend design to backend logic, API integration to cloud deployment, I bring a comprehensive and detail-oriented approach to every project.",
+  "skills": [
+    { "id": 1, "name": "React.js", "percent": 90 },
+    { "id": 2, "name": "Node.js", "percent": 95 },
+    { "id": 3, "name": "JavaScript", "percent": 95 },
+    { "id": 4, "name": "MongoDB", "percent": 80 },
+    { "id": 5, "name": "MySQL", "percent": 90 },
+    { "id": 6, "name": "AWS & Cloud Deployment", "percent": 90 },
+    { "id": 7, "name": "API Integration", "percent": 100 },
+    { "id": 8, "name": "Python", "percent": 70 }
+  ]
+}

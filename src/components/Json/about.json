@@ -1,0 +1,14 @@
+{
+  "sectionTitle": "ABOUT ME",
+  "name": "Hi There! I'm Amitav Pusty",
+  "role": "Full-Stack Developer",
+  "description": "Full-Stack Developer specializing in scalable web applications using the MERN stack, microservices, and cloud-native architecture. Passionate about clean code, AI integration, and building impactful digital products.",
+  "birthday": "May 04, 2004",
+  "phone": "+91 6371372865",
+  "email": "amitav.prusty089@gmail.com",
+  "address": "Bhubaneswar, Odisha, India",
+  "language": "Java, JavaScript, React.js, Node.js, MySQL, MongoDB, AWS, Python, API Integration",
+  "freelance": "Available",
+  "image": "https://your-profile-image-url.com",
+  "cv": "https://s3.eu-north-1.amazonaws.com/amitavpusty.shop.portfolio/AMITAV++RESUME-1.pdf"
+}

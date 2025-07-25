@@ -1,0 +1,52 @@
+{
+  "experience": [
+    {
+      "title": "Software Developer",
+      "duration": "May 2025 - Present · 3 mos",
+      "company": "Livoso Technologies · Full-time",
+      "location": "Bhubaneshwar, Odisha, India · On-site",
+      "description": "Software Developer at Livoso Technologies working on full-stack applications."
+    },
+    {
+      "title": "Full-stack Developer",
+      "duration": "Jan 2025 - Apr 2025 · 4 mos",
+      "company": "Huts4u · Freelance",
+      "location": "Bhubaneshwar, Odisha, India · Remote",
+      "description": "Developed a hotel booking system supporting hourly, daily, and villa reservations. Deployed on AWS EC2, image storage on S3, and database hosted on RDS.\nSkills: Node.js · React.js · Amazon Web Services (AWS) · Express.js · MySQL · Amazon EC2 · Amazon S3 · Amazon RDS"
+    },
+    {
+      "title": "Full Stack Developer",
+      "duration": "Oct 2024 - Jan 2025 · 4 mos",
+      "company": "LivabhiProduction · Freelance",
+      "location": "Rajasthan, India · Remote",
+      "description": "Worked on multiple freelance projects with scalable full-stack solutions using AWS and RDS.\nSkills: React.js · Node.js · MySQL · AWS · EC2 · S3 · Redis · Express.js"
+    },
+    {
+      "title": "Software Engineer Intern",
+      "duration": "May 2024 - Apr 2025 · 1 yr",
+      "company": "SequSpace Private Limited · Internship",
+      "location": "Bhubaneshwar, Odisha, India · Remote",
+      "description": "Developed 'Voiceworld', a streaming meeting podcast platform using MySQL, Node.js, React, and TypeScript. Collaborated with team members to ensure seamless integration and optimal user experience.\nSkills: React.js · Node.js · MySQL · Express.js · JavaScript"
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech in Computer Science",
+      "duration": "2022 - 2026",
+      "institution": "GITA Autonomous College, Bhubaneswar",
+      "description": "Studied core subjects including Data Structures, Algorithms, Operating Systems, DBMS, Computer Networks. Gained hands-on experience with Java, Python, C, MySQL, and full-stack web development."
+    },
+    {
+      "degree": "+2 Science",
+      "duration": "2019 - 2021",
+      "institution": "Nehru College of Basic Science, Balasore",
+      "description": "Focused on foundational subjects like Physics, Chemistry, Mathematics, and Biology."
+    },
+    {
+      "degree": "10th",
+      "duration": "2019",
+      "institution": "AUVPK Mahantipada, Agarpada",
+      "description": "Completed foundational education with focus on Science and Mathematics."
+    }
+  ]
+}

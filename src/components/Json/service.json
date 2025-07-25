@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Web Development",
+    "description": "Custom, scalable, and responsive websites using modern technologies like React, Node.js, and MongoDB.",
+    "image": "https://cdn-icons-png.flaticon.com/512/841/841364.png"
+  },
+  {
+    "id": 2,
+    "title": "App Development",
+    "description": "Cross-platform mobile app development using modern frameworks for iOS and Android.",
+    "image": "https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
+  },
+  {
+    "id": 3,
+    "title": "API Integration",
+    "description": "Seamless third-party API integration to extend your application’s capabilities.",
+    "image": "https://cdn-icons-png.flaticon.com/512/10015/10015592.png"
+  },
+  {
+    "id": 4,
+    "title": "Cloud Deployment",
+    "description": "Deploy and manage applications with AWS, Vercel, Netlify, and other cloud platforms.",
+    "image": "https://cdn-icons-png.flaticon.com/512/4144/4144495.png"
+  },
+  {
+    "id": 5,
+    "title": "UI/UX Design",
+    "description": "Clean, modern, and user-friendly designs that enhance user experience and engagement.",
+    "image": "https://cdn-icons-png.flaticon.com/512/1829/1829586.png"
+  },
+  {
+    "id": 6,
+    "title": "Maintenance & Support",
+    "description": "Ongoing support, monitoring, and updates to ensure your systems run smoothly.",
+    "image": "https://cdn-icons-png.flaticon.com/512/3103/3103446.png"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "message": "Lorem ipsum dolor sittem ametamngcing elit, per sed do eliusmoad teimpor sittem elit inuning utsed sittem do eliusmod.",
+    "name": "Joseph Alves",
+    "position": "Managing Director",
+    "image": "https://davis-html.netlify.app/assets/img/client/client3.png"
+  },
+  {
+    "id": 2,
+    "message": "Lorem ipsum dolor sittem ametamngcing elit, per sed do eliusmoad teimpor sittem elit inuning utsed sittem do eliusmod.",
+    "name": "Richard Miles",
+    "position": "Chairman",
+    "image": "https://davis-html.netlify.app/assets/img/client/client1.png"
+  },
+  {
+    "id": 3,
+    "message": "Lorem ipsum dolor sittem ametamngcing elit, per sed do eliusmoad teimpor sittem elit inuning utsed sittem do eliusmod.",
+    "name": "Vesta Shufelt",
+    "position": "Executive Director",
+    "image": "https://davis-html.netlify.app/assets/img/client/client2.png"
+  },
+   {
+    "id": 4,
+    "message": "Lorem ipsum dolor sittem ametamngcing elit, per sed do eliusmoad teimpor sittem elit inuning utsed sittem do eliusmod.",
+    "name": "Vesta Shufelt",
+    "position": "Executive Director",
+    "image": "https://davis-html.netlify.app/assets/img/client/client2.png"
+  }
+]

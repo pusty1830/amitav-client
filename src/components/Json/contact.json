@@ -1,0 +1,29 @@
+{
+  "sectionTitle": "CONTACT ME",
+  "description": "Feel free to reach out for collaborations, freelance opportunities, or just to say hello. I’m always open to discussing new projects or creative ideas.",
+  "email": ["amitav.prusty089@gmail.com"],
+  "phone": ["+91 6371372865"],
+  "address": "3490/7432 near RMTI Nursing College,Palasuni,Bhubaneshwar,751010",
+  "socials": [
+    {
+      "platform": "GitHub",
+      "icon": "bi bi-github",
+      "url": "https://github.com/pusty1830/"
+    },
+    {
+      "platform": "LinkedIn",
+      "icon": "bi bi-linkedin",
+      "url": "https://www.linkedin.com/in/amitavpusty/"
+    },
+    {
+      "platform": "X",
+      "icon": "bi bi-twitter",
+      "url": "https://x.com/PustyAmitav"
+    },
+    {
+      "platform": "Instagram",
+      "icon": "bi bi-instagram",
+      "url": "https://www.instagram.com/amitavpusty18/"
+    }
+  ]
+}
