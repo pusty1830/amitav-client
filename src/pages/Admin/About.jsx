@@ -1,26 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { UploadFile } from "../../services/Service";
+import {
+  addAbout,
+  delteAbout,
+  editAbout,
+  getAllAbout,
+  UploadFile,
+} from "../../services/Service";
 import ImageUploader from "../../components/Admin/ImageUploader";
-
-const initialAbout = {
-  id: 1,
-  title: "About Me",
-  leftImg: "https://via.placeholder.com/400x300",
-  rightSide: "I am a Developer",
-  rightSideSubtittle: "Building Modern Web Apps",
-  rightSideLevel: "Senior Developer",
-  rightSidepara:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.",
-};
+import { toast } from "react-toastify";
 
 export default function About() {
-  const [aboutData, setAboutData] = useState(initialAbout);
+  const [aboutData, setAboutData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [formInitialValues, setFormInitialValues] = useState(initialAbout);
+  const [formInitialValues, setFormInitialValues] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState(null);
+  const [selectedItemId, setSelectedItemId] = useState(null);
+
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
     leftImg: Yup.string().required("Image is required"),
@@ -35,6 +33,24 @@ export default function About() {
   const closeModal = (id) =>
     new window.bootstrap.Modal(document.getElementById(id)).hide();
 
+  useEffect(() => {
+    const payLoad = {
+      data: { filter: "" },
+      page: 0,
+      pageSize: 50,
+      order: [["createdAt", "ASC"]],
+    };
+    getAllAbout(payLoad)
+      .then((res) => {
+        console.log(res);
+        setAboutData(res?.data?.data?.rows);
+        setFormInitialValues(res?.data?.data?.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const handleAddClick = () => {
     setIsEditing(false);
     setFormInitialValues({
@@ -48,9 +64,19 @@ export default function About() {
     openModal("aboutModal");
   };
 
-  const handleEditClick = () => {
+  const handleEditClick = (item, id) => {
     setIsEditing(true);
-    setFormInitialValues({ ...aboutData });
+    setFormInitialValues(item);
+    const payLoad = {
+      ...item,
+    };
+    editAbout(id, payLoad)
+      .then((res) => {
+        toast.success(res?.data?.msg);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     openModal("aboutModal");
   };
 
@@ -59,8 +85,14 @@ export default function About() {
     const payLoad = {
       ...values,
     };
-
-    closeModal("aboutModal");
+    addAbout(payLoad)
+      .then((res) => {
+        toast(res?.data?.msg);
+        closeModal("aboutModal");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleFileChange = async (e) => {
@@ -91,10 +123,27 @@ export default function About() {
     }
   };
 
-  const handleDeleteClick = () => openModal("deleteModal");
+  const handleDeleteClick = (id) => {
+    setSelectedItemId(id);
+    openModal("deleteModal");
+  };
   const handleDeleteConfirm = () => {
-    alert(`Deleted ID: ${aboutData.id}`);
-    closeModal("deleteModal");
+    if (!selectedItemId) return;
+
+    delteAbout(selectedItemId)
+      .then((res) => {
+        toast.success(res?.data?.msg || "Deleted successfully");
+        // Remove from state
+        setAboutData((prev) =>
+          prev.filter((item) => item.id !== selectedItemId)
+        );
+        setSelectedItemId(null);
+        closeModal("deleteModal");
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Failed to delete");
+      });
   };
 
   return (
@@ -121,34 +170,36 @@ export default function About() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <img
-                  src={aboutData.leftImg}
-                  alt="About"
-                  className="img-thumbnail"
-                  style={{ maxWidth: "140px" }}
-                />
-              </td>
-              <td>{aboutData.rightSide}</td>
-              <td>{aboutData.rightSideSubtittle}</td>
-              <td>{aboutData.rightSideLevel}</td>
-              <td>{aboutData.rightSidepara}</td>
-              <td className="text-center">
-                <button
-                  className="btn btn-sm btn-primary me-2"
-                  onClick={handleEditClick}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={handleDeleteClick}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
+            {aboutData.map((item, index) => (
+              <tr key={item.id || index}>
+                <td>
+                  <img
+                    src={item?.leftImg}
+                    alt="About"
+                    className="img-thumbnail"
+                    style={{ maxWidth: "140px" }}
+                  />
+                </td>
+                <td>{item.title}</td>
+                <td>{item.rightSide}</td>
+                <td>{item.rightSideSubtittle}</td>
+                <td>{item.rightSidepara}</td>
+                <td className="text-center">
+                  <button
+                    className="btn btn-sm btn-primary me-2"
+                    onClick={() => handleEditClick(item, item.id)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => handleDeleteClick(item.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -291,7 +342,7 @@ export default function About() {
                         } custom-placeholder text-light`}
                         name="leftImg"
                         value={values.leftImg}
-                        onChange={handleFileChange}
+                        onChange={handleChange}
                         onBlur={handleBlur}
                         placeholder="Paste Image URL"
                       />
