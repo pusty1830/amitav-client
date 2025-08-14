@@ -9,8 +9,8 @@
     { "id": 3, "name": "JavaScript", "percent": 95 },
     { "id": 4, "name": "MongoDB", "percent": 80 },
     { "id": 5, "name": "MySQL", "percent": 90 },
-    { "id": 6, "name": "AWS & Cloud Deployment", "percent": 90 },
+    { "id": 6, "name": "AWS & Cloud Deployment", "percent": 30 },
     { "id": 7, "name": "API Integration", "percent": 100 },
-    { "id": 8, "name": "Python", "percent": 70 }
+    { "id": 8, "name": "Java", "percent": 60 }
   ]
 }

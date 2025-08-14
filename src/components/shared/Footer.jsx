@@ -10,7 +10,7 @@ const Footer = () => {
     >
       <div className="container">
         <p className="small m-0">
-          © {year}. Designed by <span style={{ color: "#eab308" }}>Amitav</span>
+          © {year}. Designed by <span style={{ color: "#eab308" }}>Jagat Jyoti</span>
           . All rights reserved.
         </p>
       </div>

@@ -5,14 +5,15 @@ const Service = () => {
   return (
     <div
       className="py-5"
+      
       style={{
         background: "rgb(25, 25, 25)",
         minHeight: "100vh",
       }}
     >
-      <div className="container">
+      <div className="container" >
         <div className="text-center mb-5">
-          <h2 className="text-warning fw-bold display-5">My Services</h2>
+          <h2 className="text-warning fw-bold display-5">My Expertise</h2>
           <p className="text-light fs-5">
             I provide high-quality solutions to accelerate your digital goals.
           </p>

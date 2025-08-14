@@ -6,6 +6,7 @@ const Education = () => {
   return (
     <section
       className="resume-section py-5"
+      id="resume"
       style={{
         backgroundColor: "rgba(25, 25, 25, 1)",
       }}

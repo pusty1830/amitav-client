@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const CustomButton = ({
   button,
-  route = "https://www.linkedin.com/in/amitavpusty/",
+  route = "https://www.linkedin.com/in/jagat-jyoti-dash-4957a8229/",
 }) => {
   return (
     <StyledWrapper>

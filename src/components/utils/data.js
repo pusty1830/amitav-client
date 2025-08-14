@@ -2,19 +2,73 @@ import { Instagram, LinkedIn, X } from "@mui/icons-material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 export const socialLinks = [
-  { icon: GitHubIcon, link: "https://github.com/pusty1830/" },
-  { icon: X, link: "https://x.com/PustyAmitav" },
+  { icon: GitHubIcon, link: "https://github.com/jagatjyoti-01/" },
+  { icon: X, link: "https://x.com/JagatJyoti_01?t=q-e_pTOlRMhHlEixwJnWoA&s=08" },
   {
     icon: LinkedIn,
-    link: "https://www.linkedin.com/in/amitavpusty/",
+    link: "https://www.linkedin.com/in/jagat-jyoti-dash-4957a8229/",
   },
   {
     icon: Instagram,
-    link: "https://www.instagram.com/amitavpusty18/",
+    link: "https://www.instagram.com/mr_jyoti_0.1/",
   },
 ];
 
 export const projectsData = [
+  {
+    id: 5,
+    name: "Ecommerce Application",
+    projectType: "FillStack Application",
+    image: "http://res.cloudinary.com/dccbnmjnc/image/upload/v1731137614/bn8dn71rser88nvxrtpg.webp",
+    description:
+      "OrangeScrum is a CRM landing page UI/UX design project aimed at creating an engaging, informative, and conversion-focused interface for project management and team collaboration software. The design highlights the platform’s key features, encourages sign-ups, and enhances user engagement with a clean, modern, and responsive layout.",
+    technologiesUsed: ["Figma", "Photoshop"],
+    features: [
+      "Hero Section with Clear CTA – Engaging headline, brief product overview.",
+      "Product Highlights – Key features like task management, team collaboration, and workflow automation.",
+      "Interactive Demo & Video Section – Quick walkthrough of the CRM’s capabilities.",
+      "Visually Engaging Illustrations – Modern icons and imagery that complement the CRM theme.",
+    ],
+    timeline: "January 2025 - January 2025",
+    website: "https://ecommerce.livosotech.com/",
+    screenShots: [
+      "/assets/Orangescrum Landing page/Orangescrum Landing page.png",
+    ],
+  },
+   {
+    id: 4,
+    name: "Voiceworld",
+    projectType: "Web App Development",
+    image:
+      "https://s3.eu-north-1.amazonaws.com/amitavpusty.shop.portfolio/Voiceworld.jpg",
+    description:
+      "VoiceWorld is a feature-rich communication and entertainment platform that offers free video calling, live streaming, event booking, and podcasting—bringing people together in a seamless digital experience. Designed for both personal and professional use, it serves as a hub for virtual meetings, content creation, and interactive events.",
+    technologiesUsed: [
+      "React js",
+      "React Native",
+      "Material-UI",
+      "Node.js",
+      "Sql",
+    ],
+    features: [
+      "Free Video Calling – High-quality one-on-one and group video calls with screen sharing",
+      "Live Streaming – Host and broadcast live events with audience engagement.",
+      "Podcast Hosting – Create, manage, and listen to podcasts on the platform.",
+      "Multi-User Streaming – Invite guest speakers for collaborative live sessions.",
+      "Cross-Platform Accessibility – Works on web and mobile devices for on-the-go connectivity. ",
+    ],
+    timeline: "July 2024 - August 2024",
+    website: "https://www.mydailylives.com/",
+    screenShots: [
+      "/assets/Voiceworld/Voiceworld 1.png",
+      "/assets/Voiceworld/Voiceworld 2.png",
+      "/assets/Voiceworld/Voiceworld 3.png",
+      "/assets/Voiceworld/Voiceworld 4.png",
+      "/assets/Voiceworld/Voiceworld 5.png",
+      "/assets/Voiceworld/Voiceworld 6.png",
+      "/assets/Voiceworld/Voiceworld 7.png",
+    ],
+  },
   {
     id: 1,
     name: "Gym Full Web Application",
@@ -95,66 +149,14 @@ export const projectsData = [
     ],
     location: "Rajastan, India",
   },
-  {
-    id: 4,
-    name: "Voiceworld",
-    projectType: "Web App Development",
-    image:
-      "https://s3.eu-north-1.amazonaws.com/amitavpusty.shop.portfolio/Voiceworld.jpg",
-    description:
-      "VoiceWorld is a feature-rich communication and entertainment platform that offers free video calling, live streaming, event booking, and podcasting—bringing people together in a seamless digital experience. Designed for both personal and professional use, it serves as a hub for virtual meetings, content creation, and interactive events.",
-    technologiesUsed: [
-      "React js",
-      "React Native",
-      "Material-UI",
-      "Node.js",
-      "Sql",
-    ],
-    features: [
-      "Free Video Calling – High-quality one-on-one and group video calls with screen sharing",
-      "Live Streaming – Host and broadcast live events with audience engagement.",
-      "Podcast Hosting – Create, manage, and listen to podcasts on the platform.",
-      "Multi-User Streaming – Invite guest speakers for collaborative live sessions.",
-      "Cross-Platform Accessibility – Works on web and mobile devices for on-the-go connectivity. ",
-    ],
-    timeline: "July 2024 - August 2024",
-    website: "https://www.mydailylives.com/",
-    screenShots: [
-      "/assets/Voiceworld/Voiceworld 1.png",
-      "/assets/Voiceworld/Voiceworld 2.png",
-      "/assets/Voiceworld/Voiceworld 3.png",
-      "/assets/Voiceworld/Voiceworld 4.png",
-      "/assets/Voiceworld/Voiceworld 5.png",
-      "/assets/Voiceworld/Voiceworld 6.png",
-      "/assets/Voiceworld/Voiceworld 7.png",
-    ],
-  },
+ 
 
-  {
-    id: 5,
-    name: "Orangescrum",
-    projectType: "UI & UX Design",
-    image: "/assets/Orangescrum.jpg",
-    description:
-      "OrangeScrum is a CRM landing page UI/UX design project aimed at creating an engaging, informative, and conversion-focused interface for project management and team collaboration software. The design highlights the platform’s key features, encourages sign-ups, and enhances user engagement with a clean, modern, and responsive layout.",
-    technologiesUsed: ["Figma", "Photoshop"],
-    features: [
-      "Hero Section with Clear CTA – Engaging headline, brief product overview.",
-      "Product Highlights – Key features like task management, team collaboration, and workflow automation.",
-      "Interactive Demo & Video Section – Quick walkthrough of the CRM’s capabilities.",
-      "Visually Engaging Illustrations – Modern icons and imagery that complement the CRM theme.",
-    ],
-    timeline: "January 2025 - January 2025",
-    website: "",
-    screenShots: [
-      "/assets/Orangescrum Landing page/Orangescrum Landing page.png",
-    ],
-  },
+  
   {
     id: 6,
-    name: "Adeso",
-    projectType: "Web Development",
-    image: "/assets/Adeso.jpg",
+    name: "MkPolypet",
+    projectType: "Fullstack Application",
+    image: "https://mkpolypet.in/assets/i%20(2)-CJxlvVyZ.webp",
     description:
       "Adeso is a vibrant and impactful African organization with a mission to create a world that is independent from aid by empowering communities to rely on their own resourcefulness and resilience. This UI/UX design project focuses on crafting a visually compelling, culturally rich, and user-friendly website that reflects Adeso’s vision and mission.",
     technologiesUsed: ["React", "Material-UI", "Node.js", "Sql"],
@@ -167,7 +169,7 @@ export const projectsData = [
       "News & Blog Section – Regular updates on projects, events, and advocacy efforts.",
     ],
     timeline: "May 2024 - July 2024",
-    website: "",
+    website: "https://mkpolypet.in/",
     screenShots: [
       "/assets/Adeso/Adeso 1.png",
       "/assets/Adeso/Adeso 2.png",

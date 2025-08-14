@@ -3,7 +3,7 @@ import contactData from "../../components/Json/contact.json";
 
 const Contact = () => {
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contact">
       <div className="container">
         <h2 className="text-orange text-center mb-5">
           {contactData.sectionTitle}

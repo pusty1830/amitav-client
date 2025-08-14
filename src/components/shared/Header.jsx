@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaPhoneAlt, FaBars, FaTimes, FaCode } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -8,17 +9,18 @@ const Header = () => {
 
   return (
     <header className="bg-dark text-white sticky-top shadow-sm">
-      <div className="container py-3 d-flex justify-content-between align-items-center">
+      <div className="container py-3 d-flex justify-content-between align-items-center" >
         {/* Logo Section */}
-        <div className="d-flex align-items-center gap-2">
+        <div className="d-flex align-items-center gap-2"  >
           <div
             className="d-flex justify-content-center align-items-center border border-warning rounded-circle"
             style={{ width: "35px", height: "35px" }}
+            
           >
             <FaCode className="text-warning" />
           </div>
           <h1 className="h5 fw-bold m-0">
-            <span className="text-warning">A</span>mitav
+            <span className="text-warning">J</span>agat Jyoti
           </h1>
         </div>
 
@@ -40,7 +42,7 @@ const Header = () => {
         {/* Desktop Contact */}
         <div className="d-none d-md-flex align-items-center gap-2 border-start border-secondary ps-3">
           <FaPhoneAlt className="text-secondary" />
-          <span className="text-warning fw-medium small">+91 6371372865</span>
+          <span className="text-warning fw-medium small">+91 6372304687 </span>
         </div>
 
         {/* Mobile Toggle */}
@@ -73,7 +75,7 @@ const Header = () => {
           <hr className="border-secondary" />
           <div className="d-flex align-items-center gap-2">
             <FaPhoneAlt className="text-secondary" />
-            <span className="text-warning fw-medium small">+91 6371372865</span>
+            <span className="text-warning fw-medium small">+91 6372304687 </span>
           </div>
         </div>
       )}

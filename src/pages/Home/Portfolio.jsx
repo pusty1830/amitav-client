@@ -48,7 +48,7 @@ const Portfolio = () => {
 
   return (
     <motion.div
-      id="projects"
+      id="portfolio"
       style={{
         // minHeight: isAbove900px ? "100vh" : "fit-content",
         display: "flex",
@@ -117,7 +117,7 @@ const Portfolio = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Box sx={{ display: "grid", gap: 2, width: "100%" }}>
-              {projectsData.slice(0, 4).map((project, index) => (
+              {projectsData.slice(0, 6).map((project, index) => (
                 <a
                   href={project.website}
                   target="_blank"

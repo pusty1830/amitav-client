@@ -1,19 +1,24 @@
 import React from "react";
 import aboutData from "../../components/Json/about.json"; // adjust path if needed
-import { AmitavImage } from "../../Images/image";
+import { portfolioBg } from "../../Images/image";
+import CustomButton from "../../components/Button";
+import { Box, CardMedia, useMediaQuery } from "@mui/material";
+
 
 const About = () => {
+    const isAbove900px = useMediaQuery("(min-width:900px)");
+  
   return (
-    <section className="about-section ">
+    <section  cassName="about-section my-5 " id="about">
       <div className="text-center mb-5">
-        <h2 className="text-orange mb-4">{aboutData.sectionTitle}</h2>
+        <h2 className="text-orange   mb-4 mt-4">{aboutData.sectionTitle}</h2>
       </div>
       <div className="container">
         <div className="row g-5">
           {/* Left Image */}
           <div className="col-lg-5 col-sm-12 mb-4">
             <img
-              src={AmitavImage}
+              src={portfolioBg}
               alt="Profile"
               className="img-fluid rounded"
             />
@@ -41,18 +46,27 @@ const About = () => {
               <div className="mt-3">
                 <strong>Language :</strong> {aboutData.language}
               </div>
-              <div className="mt-3">
+              {/* <div className="mt-3">
                 <strong>Freelance :</strong> {aboutData.freelance}
-              </div>
+              </div> */}
             </div>
 
-            <a
+            {/* <a
               href={aboutData.cv}
               className="btn btn-warning mt-4 rounded-pill"
               download
             >
               Download CV
-            </a>
+            </a> */}
+
+            <Box
+                      sx={{
+                        marginTop:"10px"
+                        
+                      }}
+                    >
+                      <CustomButton button="Connect With me"></CustomButton>
+                    </Box>
           </div>
         </div>
       </div>
