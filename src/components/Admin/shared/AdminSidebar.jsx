@@ -37,6 +37,16 @@ export default function AdminSidebar({ isMobile, onClose }) {
             <FaChartPie className="me-2" /> Dashboard
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink
+            to="/admin/hero"
+            onClick={handleLinkClick}
+            className="nav-link text-white"
+          >
+            <FaInfoCircle className="me-2" />
+            Hero
+          </NavLink>
+        </li>
 
         <li className="nav-item">
           <NavLink
@@ -101,7 +111,7 @@ export default function AdminSidebar({ isMobile, onClose }) {
 
         <li className="nav-item">
           <NavLink
-            to="/dashboard/messages"
+            to="/admin/message"
             onClick={handleLinkClick}
             className="nav-link text-white"
           >

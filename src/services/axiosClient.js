@@ -2,6 +2,7 @@ import { createAxiosClient } from "./axiosConfigs";
 import { jwtDecode } from "jwt-decode";
 
 const BASE_URL = "http://localhost:8080/api/";
+// const BASE_URL = "http://api.amitavpusty.site/api/";
 
 export function getCurrentAccessToken() {
   return localStorage.getItem("accessToken");

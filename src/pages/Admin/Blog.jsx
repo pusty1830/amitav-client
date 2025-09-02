@@ -1,53 +1,102 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { getUserId } from "../../services/axiosClient";
+import {
+  addBlog,
+  delteBlog,
+  editBlog,
+  getAllBlog,
+} from "../../services/Service";
+import { toast } from "react-toastify";
+
+// Validation Schema
+const BlogSchema = Yup.object().shape({
+  title: Yup.string().required("Title is required"),
+  blogImg: Yup.string()
+    .url("Must be a valid URL")
+    .required("Image URL is required"),
+  content: Yup.string()
+    .min(10, "Content must be at least 10 characters")
+    .required("Content is required"),
+  blogVdo: Yup.string().url("Must be a valid URL").nullable(),
+  userId: Yup.string().required("User ID is required"),
+});
 
 export default function BlogManager() {
-  const [blogs, setBlogs] = useState([
-    {
-      title: "AI in Education",
-      blogImg: "https://via.placeholder.com/100x60",
-      content:
-        "Artificial Intelligence is revolutionizing modern learning systems...",
-      blogVdo: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-  ]);
-
-  const [formData, setFormData] = useState({
-    title: "",
-    blogImg: "",
-    content: "",
-    blogVdo: "",
-  });
-
+  const [blogs, setBlogs] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const modalRef = useRef();
 
-  const resetForm = () => {
-    setFormData({ title: "", blogImg: "", content: "", blogVdo: "" });
-    setEditIndex(null);
+  // Load blogs
+  const fetchBlogs = () => {
+    const payLoad = {
+      data: { filter: "" },
+      page: 0,
+      pageSize: 50,
+      order: [["createdAt", "ASC"]],
+    };
+    getAllBlog(payLoad)
+      .then((res) => {
+        setBlogs(res?.data?.data?.rows || []);
+      })
+      .catch((Err) => {
+        console.log(Err);
+      });
   };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   const openModal = () => {
     const modal = new window.bootstrap.Modal(modalRef.current);
     modal.show();
   };
 
-  const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const handleAddOrUpdate = () => {
-    if (editIndex !== null) {
-      const updated = [...blogs];
-      updated[editIndex] = formData;
-      setBlogs(updated);
-    } else {
-      setBlogs([...blogs, formData]);
-    }
-    resetForm();
+  const closeModal = () => {
     modalRef.current.querySelector(".btn-close").click();
   };
 
+  const handleSubmit = (values, { resetForm }) => {
+    if (editIndex !== null) {
+      // Update blog
+      const blogToUpdate = blogs[editIndex];
+      const payLoad = {
+        ...values,
+        userId: getUserId(),
+      };
+      editBlog(blogToUpdate.id, payLoad)
+        .then((res) => {
+          toast.success(res?.data?.msg || "Blog updated successfully");
+          fetchBlogs();
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Error updating blog");
+        });
+    } else {
+      // Add new blog
+      const payLoad = {
+        userId: getUserId(),
+        ...values,
+      };
+      addBlog(payLoad)
+        .then((res) => {
+          toast.success(res?.data?.msg || "Blog added successfully");
+          fetchBlogs();
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Error adding blog");
+        });
+    }
+    resetForm();
+    setEditIndex(null);
+    closeModal();
+  };
+
   const handleEdit = (index) => {
-    setFormData(blogs[index]);
     setEditIndex(index);
     openModal();
   };
@@ -55,7 +104,15 @@ export default function BlogManager() {
   const handleDelete = (index) => {
     if (window.confirm("Are you sure you want to delete this blog?")) {
       const updated = blogs.filter((_, i) => i !== index);
+
       setBlogs(updated);
+      delteBlog(index)
+        .then((res) => {
+          toast(res?.data?.msg);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
@@ -66,7 +123,7 @@ export default function BlogManager() {
         <button
           className="btn btn-light"
           onClick={() => {
-            resetForm();
+            setEditIndex(null);
             openModal();
           }}
         >
@@ -84,13 +141,14 @@ export default function BlogManager() {
               <th>Image</th>
               <th>Content</th>
               <th>Video</th>
+              <th>User ID</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {blogs.length > 0 ? (
               blogs.map((blog, i) => (
-                <tr key={i}>
+                <tr key={blog.id || i}>
                   <td>{i + 1}</td>
                   <td>{blog.title}</td>
                   <td>
@@ -117,6 +175,7 @@ export default function BlogManager() {
                       "-"
                     )}
                   </td>
+                  <td>{blog.userId}</td>
                   <td>
                     <button
                       className="btn btn-sm btn-warning me-2"
@@ -135,7 +194,7 @@ export default function BlogManager() {
               ))
             ) : (
               <tr>
-                <td colSpan="6" className="text-center">
+                <td colSpan="7" className="text-center">
                   No blogs added yet.
                 </td>
               </tr>
@@ -144,7 +203,7 @@ export default function BlogManager() {
         </table>
       </div>
 
-      {/* Modal */}
+      {/* Modal with Formik */}
       <div
         className="modal fade"
         ref={modalRef}
@@ -164,62 +223,111 @@ export default function BlogManager() {
                 data-bs-dismiss="modal"
               ></button>
             </div>
-            <div className="modal-body">
-              <form>
-                <div className="mb-3">
-                  <label className="form-label">Title</label>
-                  <input
-                    name="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                    className="form-control bg-black text-white"
-                    placeholder="Enter blog title"
-                  />
-                </div>
+            <Formik
+              initialValues={
+                editIndex !== null
+                  ? blogs[editIndex]
+                  : {
+                      title: "",
+                      blogImg: "",
+                      content: "",
+                      blogVdo: "",
+                      userId: "",
+                    }
+              }
+              validationSchema={BlogSchema}
+              onSubmit={handleSubmit}
+              enableReinitialize
+            >
+              {() => (
+                <Form>
+                  <div className="modal-body">
+                    <div className="mb-3">
+                      <label className="form-label">Title</label>
+                      <Field
+                        name="title"
+                        className="form-control bg-black text-white"
+                        placeholder="Enter blog title"
+                      />
+                      <ErrorMessage
+                        name="title"
+                        component="div"
+                        className="text-danger small"
+                      />
+                    </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Image URL</label>
-                  <input
-                    name="blogImg"
-                    value={formData.blogImg}
-                    onChange={handleChange}
-                    className="form-control bg-black text-white"
-                    placeholder="Enter image URL"
-                  />
-                </div>
+                    <div className="mb-3">
+                      <label className="form-label">Image URL</label>
+                      <Field
+                        name="blogImg"
+                        className="form-control bg-black text-white"
+                        placeholder="Enter image URL"
+                      />
+                      <ErrorMessage
+                        name="blogImg"
+                        component="div"
+                        className="text-danger small"
+                      />
+                    </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Content</label>
-                  <textarea
-                    name="content"
-                    value={formData.content}
-                    onChange={handleChange}
-                    className="form-control bg-black text-white"
-                    rows="4"
-                    placeholder="Enter blog content"
-                  ></textarea>
-                </div>
+                    <div className="mb-3">
+                      <label className="form-label">Content</label>
+                      <Field
+                        as="textarea"
+                        name="content"
+                        rows="4"
+                        className="form-control bg-black text-white"
+                        placeholder="Enter blog content"
+                      />
+                      <ErrorMessage
+                        name="content"
+                        component="div"
+                        className="text-danger small"
+                      />
+                    </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Video URL (optional)</label>
-                  <input
-                    name="blogVdo"
-                    value={formData.blogVdo}
-                    onChange={handleChange}
-                    className="form-control bg-black text-white"
-                    placeholder="YouTube / Vimeo URL"
-                  />
-                </div>
-              </form>
-            </div>
-            <div className="modal-footer border-secondary">
-              <button className="btn btn-secondary" data-bs-dismiss="modal">
-                Cancel
-              </button>
-              <button className="btn btn-success" onClick={handleAddOrUpdate}>
-                {editIndex !== null ? "Update Blog" : "Add Blog"}
-              </button>
-            </div>
+                    <div className="mb-3">
+                      <label className="form-label">Video URL (optional)</label>
+                      <Field
+                        name="blogVdo"
+                        className="form-control bg-black text-white"
+                        placeholder="YouTube / Vimeo URL"
+                      />
+                      <ErrorMessage
+                        name="blogVdo"
+                        component="div"
+                        className="text-danger small"
+                      />
+                    </div>
+
+                    <div className="mb-3">
+                      <label className="form-label">User ID</label>
+                      <Field
+                        name="userId"
+                        className="form-control bg-black text-white"
+                        placeholder="Enter user ID"
+                      />
+                      <ErrorMessage
+                        name="userId"
+                        component="div"
+                        className="text-danger small"
+                      />
+                    </div>
+                  </div>
+                  <div className="modal-footer border-secondary">
+                    <button
+                      className="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+                    <button className="btn btn-success" type="submit">
+                      {editIndex !== null ? "Update Blog" : "Add Blog"}
+                    </button>
+                  </div>
+                </Form>
+              )}
+            </Formik>
           </div>
         </div>
       </div>

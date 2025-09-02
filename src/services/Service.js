@@ -94,3 +94,28 @@ export function delteResume(id) {
 export function getAllResume(payLoad) {
   return client.post("/Resume/search-record", payLoad);
 }
+
+export function addHero(payLoad) {
+  return client.post("/Hero/create", payLoad);
+}
+export function editHero(id, payLoad) {
+  return client.patch(`/Hero/update-record/${id}`, payLoad);
+}
+export function delteHero(id) {
+  return client.delete(`/Hero/delete-record/${id}`);
+}
+
+export function getAllHero(payLoad) {
+  return client.post("/Hero/search-record", payLoad);
+}
+
+export function addContact(payLoad) {
+  return client.post("/Contact/create", payLoad);
+}
+export function getContactMessages(payLoad) {
+  return client.post("/Contact/search-record", payLoad);
+}
+
+export function deleteContactMessage(id) {
+  return client.delete(`/Contact/delete-record/${id}`);
+}

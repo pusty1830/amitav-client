@@ -1,14 +1,58 @@
 import { Box, CardMedia, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "../../components/Button";
 import SlidingContent from "../../components/slidingContent";
-import { socialLinks } from "../../components/utils/data";
+
 import { AmitavImage, heroBg } from "../../Images/image";
 import color from "../../components/color";
+import { getAllHero } from "../../services/Service";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6"; // for X/Twitter
 
 const HomeSection = () => {
   const isAbove900px = useMediaQuery("(min-width:900px)");
+  const [hero, setHero] = useState({});
+  const [socialLinks, setSocialLinks] = useState([]);
+
+  useEffect(() => {
+    const payLoad = {
+      data: { filter: "" },
+      page: 0,
+      pageSize: 50,
+      order: [["createdAt", "ASC"]],
+    };
+
+    getAllHero(payLoad)
+      .then((res) => {
+        const heroData = res?.data?.data?.rows?.[0] || {};
+        setHero(heroData);
+
+        // Parse socialMediaLinks if present
+        if (heroData.socialMediaLinks) {
+          const linksObj = JSON.parse(heroData.socialMediaLinks || "{}");
+
+          const iconMap = {
+            github: FaGithub,
+            x: FaXTwitter,
+            linkedin: FaLinkedin,
+            instagram: FaInstagram,
+          };
+
+          const linksArray = Object.entries(linksObj).map(([key, link]) => ({
+            icon: iconMap[key],
+            link,
+          }));
+
+          setSocialLinks(linksArray);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  console.log(hero);
 
   return (
     <motion.div
@@ -51,14 +95,21 @@ const HomeSection = () => {
           zindex: 2,
         }}
       >
-        {socialLinks.map(({ icon: Icon, link }, index) => (
-          <a key={index} href={link} target="_blank" rel="noopener noreferrer">
-            <Icon
-              style={{ fontSize: "20px", color: color.firstColor }}
-              id="button-hover"
-            />
-          </a>
-        ))}
+        {socialLinks.map(({ icon: Icon, link }, index) =>
+          Icon ? (
+            <a
+              key={index}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon
+                style={{ fontSize: "20px", color: color.firstColor }}
+                id="button-hover"
+              />
+            </a>
+          ) : null
+        )}
       </Box>
       <div
         style={{
@@ -75,7 +126,7 @@ const HomeSection = () => {
         <SlidingContent
           text=" Full-Stack Developer| Scalable Web & AI Solutions"
           highlight="Full-Stack Developer"
-          imageSrc={AmitavImage}
+          imageSrc={hero?.herophoto}
         />
 
         <Box
