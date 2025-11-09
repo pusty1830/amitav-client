@@ -5,17 +5,10 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  const navLinks = [
-    "HOME",
-    "ABOUT",
-    "SERVICE",
-    "RESUME",
-    "PORTFOLIO",
-    "BLOG",
-    "CONTACT",
-  ];
+  // Updated nav: removed SERVICE, added AI (external)
+  const navLinks = ["HOME", "ABOUT", "RESUME", "PORTFOLIO", "BLOG", "CONTACT", "AI"];
 
-  // 🔹 Detect active section while scrolling
+  // 🔹 Detect active section while scrolling (for internal sections only)
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
 
@@ -37,6 +30,34 @@ const Header = () => {
     };
   }, []);
 
+  const renderLink = (link, isMobile = false) => {
+    const id = link.toLowerCase();
+    const isBlog = link === "BLOG";
+    const isAI = link === "AI";
+    const href = isAI
+      ? "https://ai.amitavpusty.site"
+      : isBlog
+      ? "/blog"
+      : `/#${id}`;
+    const className = `${isMobile ? "d-block py-1" : ""} text-decoration-none ${
+      // Don't highlight AI (external). Others highlight if active.
+      !isAI && activeSection === id ? "text-warning" : "text-white"
+    } fw-medium ${isMobile ? "" : "small"}`;
+
+    return (
+      <a
+        key={link}
+        href={href}
+        className={className}
+        onClick={() => isMobile && setIsMobileMenuOpen(false)}
+        target={isAI ? "_blank" : "_self"}
+        rel={isAI ? "noopener noreferrer" : ""}
+      >
+        {link}
+      </a>
+    );
+  };
+
   return (
     <header className="bg-dark text-white sticky-top shadow-sm">
       <div className="container py-3 d-flex justify-content-between align-items-center">
@@ -55,20 +76,7 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="d-none d-md-flex gap-4 align-items-center">
-          {navLinks.map((link) => {
-            const id = link.toLowerCase();
-            return (
-              <a
-                key={link}
-                href={link === "BLOG" ? "/blog" : `/#${id}`}
-                className={`text-decoration-none ${
-                  activeSection === id ? "text-warning" : "text-white"
-                } fw-medium small`}
-              >
-                {link}
-              </a>
-            );
-          })}
+          {navLinks.map((link) => renderLink(link, false))}
         </nav>
 
         {/* Desktop Contact */}
@@ -91,21 +99,7 @@ const Header = () => {
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
         <div className="bg-black border-top border-secondary d-md-none px-4 pt-3 pb-4">
-          {navLinks.map((link) => {
-            const id = link.toLowerCase();
-            return (
-              <a
-                key={link}
-                href={link === "BLOG" ? "/blog" : `/#${id}`}
-                className={`d-block py-1 text-decoration-none ${
-                  activeSection === id ? "text-warning" : "text-white"
-                } fw-medium`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link}
-              </a>
-            );
-          })}
+          {navLinks.map((link) => renderLink(link, true))}
 
           <hr className="border-secondary" />
           <div className="d-flex align-items-center gap-2">

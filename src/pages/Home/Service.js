@@ -29,6 +29,10 @@ const Service = () => {
                   borderRadius: "20px",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   transition: "transform 0.3s ease",
+                  cursor: "pointer", // 👈 clickable
+                }}
+                onClick={() => {
+                  window.location.href = "/#contact"; // 👈 jump to contact
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-8px)";

@@ -25,34 +25,52 @@ const HomeSection = () => {
 
     getAllHero(payLoad)
       .then((res) => {
-        const heroData = res?.data?.data?.rows?.[0] || {};
+        const heroData = res?.data?.data?.rows?.[0] ?? {};
         setHero(heroData);
 
-        // Parse socialMediaLinks if present
-        if (heroData.socialMediaLinks) {
-          const linksObj = JSON.parse(heroData.socialMediaLinks || "{}");
+        const raw = heroData?.socialMediaLinks;
+        let linksObj = {};
 
-          const iconMap = {
-            github: FaGithub,
-            x: FaXTwitter,
-            linkedin: FaLinkedin,
-            instagram: FaInstagram,
-          };
-
-          const linksArray = Object.entries(linksObj).map(([key, link]) => ({
-            icon: iconMap[key],
-            link,
-          }));
-
-          setSocialLinks(linksArray);
+        if (typeof raw === "string") {
+          try {
+            linksObj = raw.trim() ? JSON.parse(raw) : {};
+          } catch (e) {
+            console.warn("Invalid JSON in socialMediaLinks:", e);
+            linksObj = {};
+          }
+        } else if (raw && typeof raw === "object") {
+          linksObj = raw;
         }
+
+        // normalize keys (twitter -> x), and map to icons
+        const iconMap = {
+          github: FaGithub,
+          x: FaXTwitter,
+          twitter: FaXTwitter, // fallback alias
+          linkedin: FaLinkedin,
+          instagram: FaInstagram,
+        };
+
+        const linksArray = Object.entries(linksObj)
+          .map(([k, v]) => [k.toLowerCase(), v])
+          .filter(([k, v]) => iconMap[k] && typeof v === "string" && v.trim())
+          .map(([k, link]) => ({ icon: iconMap[k], link }));
+
+        setSocialLinks(linksArray);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
-  }, []);
+  }, []); // include payLoad if it can change
 
-  console.log(hero);
+  // log AFTER state actually changes
+  useEffect(() => {
+    console.log("socialLinks", socialLinks);
+  }, [socialLinks]);
+
+  useEffect(() => {
+    console.log("hero", hero);
+  }, [hero]);
 
   return (
     <motion.div

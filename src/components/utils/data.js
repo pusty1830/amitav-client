@@ -19,7 +19,7 @@ export const projectsData = [
     id: 1,
     name: "Gym Full Web Application",
     image:
-      "https://s3.eu-north-1.amazonaws.com/amitavpusty.shop.portfolio/gymimage.jpg",
+      "https://amitavpustysite.s3.ap-south-1.amazonaws.com/photo-1534438327276-14e5300c3a48.avif",
     description:
       "Wakeupsales Dashboard is a Customer Relationship Management (CRM) UI/UX design project focused on providing an intuitive and data-driven interface for managing sales, leads, and customer interactions efficiently. The design ensures a seamless workflow, insightful analytics, and a user-friendly experience for businesses looking to streamline their sales processes.",
     projectType: "Web App Development",
@@ -41,7 +41,7 @@ export const projectsData = [
     name: "Huts4u",
     projectType: "Web App Development",
     image:
-      "https://s3.eu-north-1.amazonaws.com/amitavpusty.shop.portfolio/Huts4u.jpg",
+      "https://amitavpustysite.s3.ap-south-1.amazonaws.com/Screenshot+2025-11-09+233725.png",
     description:
       "Huts4U is a UI/UX design project focused on creating an intuitive and seamless hotel booking experience for users who need hourly accommodations. The design prioritizes ease of use, minimalistic aesthetics, and smooth navigation, ensuring a hassle-free booking process.",
     technologiesUsed: ["Figma", "Photoshop"],
@@ -50,8 +50,8 @@ export const projectsData = [
       "Seamless Booking Flow – Users can book hotels in just a few taps with clear time-slot selection.",
       "Interactive Hotel Listings – High-quality images, pricing, and user reviews for informed decisions.",
     ],
-    timeline: "February 2025 - Present",
-    website: "https://www.huts4u.shop/",
+    timeline: "Jan 2025 - Apr 2025",
+    website: "https://www.huts4u.in/",
     screenShots: [
       "/assets/Huts4u/Huts4u 1.png",
       "/assets/Huts4u/Huts4u 2.png",
@@ -63,7 +63,7 @@ export const projectsData = [
     id: 3,
     name: "Liv Abhi Productions",
     image:
-      "https://s3.eu-north-1.amazonaws.com/amitavpusty.shop.portfolio/Liv+Abhi.jpg",
+      "https://amitavpustysite.s3.ap-south-1.amazonaws.com/Screenshot+2025-11-09+233741.png",
     description:
       "LIV ABHI is a comprehensive movie production website that seamlessly integrates social networking features to connect filmmakers, artists, and enthusiasts. The platform serves as a one-stop hub where users can explore job opportunities, enroll in courses, shop for industry-related products, showcase their portfolios, and engage with a like-minded community.This project showcases a comprehensive digital ecosystem for film professionals while fostering collaboration and career growth. It is a strong addition to your portfolio, demonstrating expertise in React, Material-UI, and user-centric web applications. ",
     projectType: "Web App Development",
@@ -100,7 +100,7 @@ export const projectsData = [
     name: "Voiceworld",
     projectType: "Web App Development",
     image:
-      "https://s3.eu-north-1.amazonaws.com/amitavpusty.shop.portfolio/Voiceworld.jpg",
+      "https://amitavpustysite.s3.ap-south-1.amazonaws.com/Screenshot+2025-11-09+233815.png",
     description:
       "VoiceWorld is a feature-rich communication and entertainment platform that offers free video calling, live streaming, event booking, and podcasting—bringing people together in a seamless digital experience. Designed for both personal and professional use, it serves as a hub for virtual meetings, content creation, and interactive events.",
     technologiesUsed: [
